@@ -44,23 +44,30 @@ def largest_contiguous_subsum(array)
   sub_arrays.map {|sub| sub.reduce(:+)}.max
 end
 
-list = [5,3,-7]
+list = [2, 3, -6, 7, -6, 7]
+# for edge case test of all negative numbers in the array
+neg_list = [-3, -6, -7, -6, -7, -2]
+  
 p largest_contiguous_subsum(list)
 
 
 def better_largest_contiguous_subsum(array)
-  largest_sum = array[0]
-  i = 1
-  until i == array.length + 1
-    array.each_cons(i) do |sub|
-      sum = sub.reduce(:+)
-      largest_sum = sum if largest_sum < sum
+  current_sum, max_sum = nil, nil
+  array.each do |el|
+    if current_sum.nil?
+      current_sum, max_sum = el, el 
+      next
+    else
+      current_sum += el
     end
-    i += 1
+    max_sum = current_sum if current_sum > max_sum
+    current_sum = 0 if current_sum < 0
   end
-  largest_sum
+  max_sum
 end
 
 p better_largest_contiguous_subsum(list)
+p better_largest_contiguous_subsum(neg_list)
+
 
 
