@@ -17,3 +17,14 @@ end
 
 list = [ 0, 3, 5, 4, -5, 10, 1, 90 ]
 p my_min(list)
+
+def better_my_min(array)
+  smallest = array[0]
+  array[1..-1].each do |el|
+    smallest = el if el < smallest
+  end
+  smallest
+end
+
+p better_my_min(list)
+
