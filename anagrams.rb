@@ -22,3 +22,10 @@ end
 
 p second_anagram?("gizmo", "sal")    #=> false
 p second_anagram?("elvis", "lives")    #=> true
+
+def third_anagram?(string, test_str)
+  string.chars.sort == test_str.chars.sort
+end
+
+p third_anagram?("gizmo", "sal")    #=> false
+p third_anagram?("elvis", "lives")    #=> true
